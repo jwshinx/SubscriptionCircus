@@ -22,7 +22,13 @@ describe "Subscription" do
    sub.start_auto_invoicing_date.should == Date.today
   end
   it "returns address" do
-   sub.address.should == '1 Main St'
+   sub.address.address.should == '1 Main Street'
+  end
+  it "returns address zip" do
+   sub.address.zip.should == '90000'
+  end
+  it "returns address acitve state" do
+   sub.address.isactive.should be_true 
   end
   it "returns apartment unit" do
    sub.unit.should == '101'
