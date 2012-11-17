@@ -1,4 +1,4 @@
 puts "\n---------------------------"
-puts "  SUB MANAGER "
+puts "  SUBSCRIPTION CIRCUS
 puts "---------------------------"
 puts "\n\n"

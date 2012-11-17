@@ -9,8 +9,11 @@ describe "Subscription" do
   it "returns frequency" do
    sub.frequency.should == 'Monthly' 
   end
-  it "returns name" do
+  it "returns customer name" do
    sub.customer.name.should == 'James Bond'
+  end
+  it "returns customer active state" do
+   sub.customer.isactive.should be_true 
   end
   it "returns anniversary date" do
    sub.anniversary_date.should == Date.today
