@@ -1,5 +1,5 @@
 class Subscription
- attr_reader :frequency, :name, :address, :unit, :anniversary_date, :start_auto_invoicing_date 
+ attr_reader :frequency, :name, :address, :unit, :anniversary_date, :start_auto_invoicing_date, :isactive
  def initialize options={}
    #puts "---> #{options.inspect}"
    #puts "---> xxx not defined 1" if options[:xxx].nil?

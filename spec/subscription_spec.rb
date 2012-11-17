@@ -22,10 +22,13 @@ describe "Subscription" do
   it "returns apartment unit" do
    sub.unit.should == '101'
   end
+  it "returns *active*" do
+   sub.isactive.should be_true 
+  end
  end
 
 end
 
 def valid_subscription_attributes
- {:frequency => 'Monthly', :anniversary_date => Date.today, :start_auto_invoicing_date => Date.today, :name => 'James Bond', :address => '1 Main St', :unit => '101' } 
+ {:frequency => 'Monthly', :anniversary_date => Date.today, :start_auto_invoicing_date => Date.today, :name => 'James Bond', :address => '1 Main St', :unit => '101', :isactive => true} 
 end

@@ -1,1 +1,2 @@
 require 'subscription'
+require 'customer'
