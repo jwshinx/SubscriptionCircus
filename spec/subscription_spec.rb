@@ -1,6 +1,8 @@
 require 'spec_helper'
+require 'world'
 
 describe "Subscription" do
+ include World
 
  describe "creation" do
   let(:sub) { Subscription.new valid_subscription_attributes } 
@@ -27,8 +29,4 @@ describe "Subscription" do
   end
  end
 
-end
-
-def valid_subscription_attributes
- {:frequency => 'Monthly', :anniversary_date => Date.today, :start_auto_invoicing_date => Date.today, :name => 'James Bond', :address => '1 Main St', :unit => '101', :isactive => true} 
 end

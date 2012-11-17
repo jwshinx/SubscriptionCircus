@@ -1,6 +1,8 @@
 require 'spec_helper'
+require 'world'
 
 describe "Customer" do
+ include World
 
  describe "creation" do
   let(:cust) { Customer.new valid_customer_attributes } 
@@ -14,6 +16,3 @@ describe "Customer" do
 
 end
 
-def valid_customer_attributes
- {:name => 'James Bond', :isactive => true}
-end
