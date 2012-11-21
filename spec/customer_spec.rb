@@ -14,5 +14,10 @@ describe "Customer" do
   end
  end
 
+ describe "factory" do
+  let(:james) { FactoryGirl.build(:customer) }
+  it { james.name.should == 'James Bond' }
+  it { james.isactive.should be_true } 
+ end
 end
 
