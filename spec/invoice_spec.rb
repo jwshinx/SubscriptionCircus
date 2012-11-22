@@ -12,12 +12,12 @@ describe "Invoice" do
   it { invoice.amount_paid.should == 50 }
  end
 
- describe "xxx" do
+ describe "hundreds-unpaid, due yesterday" do
   let(:invoice) { FactoryGirl.build( :invoice, :hundreds_due, :not_paid, :dated_yesterday ) }
-  it "kdkd" do 
-   invoice.customer.name.should == 'James Bond'  
-   puts "---> #{invoice.to_s}"
-  end
+  it { invoice.customer.name.should == 'James Bond' }
+  it { invoice.amount_due.should == 500 }
+  it { invoice.amount_paid.should == 0 }
+  it { invoice.date.should == Date.today-1 } 
  end
 end
 
