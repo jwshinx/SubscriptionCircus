@@ -35,4 +35,10 @@ FactoryGirl.define do
                      :date => date, :amount_due => amount_due, :amount_paid => amount_paid,
                      :customer => customer ) }
  end
+ factory :one_month_plus_overdue_invoice, class: Invoice do
+  ignore { amount_due 50; amount_paid 0; date Date.today-40; customer FactoryGirl.build(:jane) }
+  initialize_with { Invoice.new(
+                     :date => date, :amount_due => amount_due, :amount_paid => amount_paid,
+                     :customer => customer ) }
+ end
 end

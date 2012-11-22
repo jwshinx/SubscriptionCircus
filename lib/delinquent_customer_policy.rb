@@ -1,4 +1,4 @@
-class ThreeMonthsDelinquentCustomerPolicy 
+class DelinquentCustomerPolicy 
  attr_reader :customer, :last_invoice
 
  def initialize options={} 
@@ -7,11 +7,15 @@ class ThreeMonthsDelinquentCustomerPolicy
  end
 
  def delinquent?
-  is_active? && owes_balance? && invoiced_three_months_ago?
+  is_active? && owes_balance? && invoiced_three_months_plus_ago?
  end
  
- def invoiced_three_months_ago?
+ def invoiced_three_months_plus_ago?
   @last_invoice.date < Date.today-90
+ end
+
+ def invoiced_one_month_plus_ago?
+  @last_invoice.date < Date.today-30
  end
 
  def owes_balance?

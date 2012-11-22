@@ -13,6 +13,9 @@ FactoryGirl.define do
  factory :tim, class: Customer do
   initialize_with { Customer.new(:name => 'Tim Smith', :isactive => true) }
  end
+ factory :jane, class: Customer do
+  initialize_with { Customer.new(:name => 'Jane Plain', :isactive => true) }
+ end
  trait :is_active do
   isactive true
  end
