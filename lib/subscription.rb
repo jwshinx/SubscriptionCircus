@@ -1,5 +1,6 @@
 class Subscription
  attr_reader :frequency, :customer, :address, :unit, :anniversary_date, :start_auto_invoicing_date, :isactive
+
  def initialize options={}
   @frequency = options[:frequency] ? options[:frequency] : 'N/A'
   @customer = options[:customer] ? options[:customer] : 'N/A'
@@ -12,11 +13,11 @@ class Subscription
  
  def to_s
   puts %Q{ 
-   name: #{@name}
+   name: #{@customer.name}
    frequency: #{@frequency}
    anni dt: #{@anniversary_date}
    start dt: #{@start_auto_invoicing_date}
-   address: #{@address} #{@unit}
+   address: #{@address.address} #{@unit}
   }
  end
 end
