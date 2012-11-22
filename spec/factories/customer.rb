@@ -10,4 +10,7 @@ FactoryGirl.define do
  factory :mike, class: Customer do
   initialize_with { Customer.new(:name => 'Michael Corleone', :isactive => true) }
  end
+ factory :tim, class: Customer do
+  initialize_with { Customer.new(:name => 'Tim Smith', :isactive => true) }
+ end
 end
