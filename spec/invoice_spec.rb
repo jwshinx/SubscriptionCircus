@@ -19,5 +19,13 @@ describe "Invoice" do
   it { invoice.amount_paid.should == 0 }
   it { invoice.date.should == Date.today-1 } 
  end
+
+ describe "unpaid, due last month" do
+  let(:invoice) { FactoryGirl.build( :one_month_old_overdue_invoice, :dated_30_days_ago ) }
+  it { invoice.customer.name.should == 'Tim Smith' }
+  it { invoice.amount_due.should == 50 }
+  it { invoice.amount_paid.should == 0 }
+  it { invoice.date.should == Date.today-30 } 
+ end
 end
 
