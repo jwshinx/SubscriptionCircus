@@ -1,5 +1,4 @@
-class PaymentRating
- include Comparable
+class PaymentRating < Rating
 
  def self.from_last_invoice( invoice )
   if( (invoice.amount_paid.to_f / invoice.amount_due.to_f) == 1 )
@@ -13,18 +12,4 @@ class PaymentRating
   end
  end
 
- def initialize(letter)
-  @letter = letter
- end
-
- def <=>(other)
-  other.to_s <=> to_s
- end
-
- def better_than?( other )
-  self > other
- end
- def to_s
-  @letter.to_s
- end
 end
