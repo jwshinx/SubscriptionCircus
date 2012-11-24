@@ -5,8 +5,11 @@ FactoryGirl.define do
                      :date => date, :amount_due => amount_due, :amount_paid => amount_paid,
                      :customer => customer ) }
  end
- trait :hundreds_due do
+ trait :amount_500_due do
   amount_due 500 
+ end
+ trait :amount_50_due do
+  amount_due 50 
  end
  trait :not_paid do
   amount_paid 0 

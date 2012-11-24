@@ -13,7 +13,7 @@ describe "Invoice" do
  end
 
  describe "hundreds-unpaid, due yesterday" do
-  let(:invoice) { FactoryGirl.build( :invoice, :hundreds_due, :not_paid, :dated_yesterday ) }
+  let(:invoice) { FactoryGirl.build( :invoice, :amount_500_due, :not_paid, :dated_yesterday ) }
   it { invoice.customer.name.should == 'James Bond' }
   it { invoice.amount_due.should == 500 }
   it { invoice.amount_paid.should == 0 }
