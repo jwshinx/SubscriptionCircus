@@ -8,7 +8,7 @@ class Address
  end
 
  def to_s
-  puts %Q{
+  %Q{
    address: #{@address}
    zip: #{@zip}
    isactive: #{@isactive}

@@ -9,7 +9,7 @@ class Invoice
  end
 
  def to_s
-  puts %Q{
+  %Q{
    customer: #{@customer.name}
    date: #{@date}
    amount due: #{@amount_due}

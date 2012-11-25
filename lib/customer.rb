@@ -7,7 +7,7 @@ class Customer
  end
 
  def to_s
-  puts %Q{
+  %Q{
    name: #{@name}
    isactive: #{@isactive}
   }

@@ -12,7 +12,7 @@ class Subscription
  end
  
  def to_s
-  puts %Q{ 
+  %Q{ 
    name: #{@customer.name}
    frequency: #{@frequency}
    anni dt: #{@anniversary_date}
