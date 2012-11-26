@@ -1,4 +1,11 @@
+require 'decision_ideas'
+
 class PaymentRating < Rating
+ include DecisionIdeas 
+
+ try_another :saygoodbye do |value|
+  value == 'joel' ? 'later joel' : "goodbye #{value}"
+ end
 
  def self.from_last_invoice( invoice )
   if( (invoice.amount_paid.to_f / invoice.amount_due.to_f) == 1 )

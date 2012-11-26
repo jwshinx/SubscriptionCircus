@@ -52,6 +52,20 @@ describe "PaymentRating" do
   end
  end
 
+ describe "when saygoodbye called with *joel*" do
+  it "returns *later joel*" do
+   blue = FactoryGirl.build( :payment_20_of_50_rated ) 
+   blue.saygoodbye('joel').should == 'later joel'
+  end
+ end
+
+ describe "when saygoodbye called with *nico*" do
+  it "returns *goodbye nico*" do
+   red = FactoryGirl.build( :payment_20_of_50_rated ) 
+   red.saygoodbye('nico').should == 'goodbye nico'
+  end
+ end
+
  #its(:name){ should be_present }
 end
 
