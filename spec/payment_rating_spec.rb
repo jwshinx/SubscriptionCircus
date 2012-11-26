@@ -79,6 +79,32 @@ describe "PaymentRating" do
   it "returns mmm" do
    blue = FactoryGirl.build( :payment_20_of_50_rated ) 
    puts "---> noise? #{PaymentRating.methods.grep(/^no/).inspect}"
+   puts "---> blue noise #{PaymentRating.noise}"
+   puts "---> color? #{PaymentRating.methods.grep(/^col/).inspect}"
+   puts "---> its color #{PaymentRating.color}"
+  end
+ end
+ describe "when ppp" do
+  let(:invoice) { FactoryGirl.build( :invoice ) }
+  it "returns ppp" do
+   #puts "---> ppp 1: #{PaymentRating.analyze_from( invoice )}"
+   pr = PaymentRating.analyze_from( invoice ) do |pct|
+    if( pct == 1 )
+     PaymentRating.new("A")
+    elsif( pct >= 0.5 )
+     PaymentRating.new("C")
+    elsif( pct > 0 )
+     PaymentRating.new("D")
+    else
+     PaymentRating.new("F")
+    end
+   end
+   
+   puts "---> ppp 1: #{pr.inspect}"
+   #puts "---> noise? #{PaymentRating.methods.grep(/^no/).inspect}"
+   #puts "---> blue noise #{PaymentRating.noise}"
+   #puts "---> color? #{PaymentRating.methods.grep(/^col/).inspect}"
+   #puts "---> its color #{PaymentRating.color}"
   end
  end
 

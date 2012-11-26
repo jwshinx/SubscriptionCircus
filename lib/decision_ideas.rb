@@ -13,6 +13,10 @@ module DecisionIdeas
     block.call(arg.amount_paid, arg.amount_due)
    end
   end
+ 
+  def analyze_from arg
+   yield( arg.amount_paid.to_f / arg.amount_due.to_f ) 
+  end
 
   def try_another method_name, &block
    define_method method_name do |value|

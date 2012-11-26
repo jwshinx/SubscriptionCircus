@@ -1,5 +1,9 @@
 module MyClassMethods
- class Class
+ def self.included( base )
+  base.extend AddedClassMethods
+ end
+ 
+ module AddedClassMethods
   def color
    'red'
   end
