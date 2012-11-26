@@ -1,10 +1,10 @@
 require 'decision_ideas'
+require 'my_class_methods'
 
 class PaymentRating < Rating
  include DecisionIdeas 
- #extend DecisionIdeas 
-
- # lets call this create_based_on :invoice
+ include MyClassMethods
+ 
  try_another :saygoodbye do |value|
   value == 'joel' ? 'later joel' : "goodbye #{value}"
  end

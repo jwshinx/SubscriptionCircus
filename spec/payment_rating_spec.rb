@@ -71,7 +71,14 @@ describe "PaymentRating" do
   let(:yellow) { FactoryGirl.build( :payment_20_of_50_rated ) }
   let(:invoice) { FactoryGirl.build( :invoice ) }
   it "returns nnn" do
+   #yellow = FactoryGirl.build( :payment_nnn_rated ) 
    yellow.from_nnn_invoice( invoice ).should == 'A'
+  end
+ end
+ describe "when mmm" do
+  it "returns mmm" do
+   blue = FactoryGirl.build( :payment_20_of_50_rated ) 
+   puts "---> noise? #{PaymentRating.methods.grep(/^no/).inspect}"
   end
  end
 
@@ -88,6 +95,9 @@ def insert_method(clazz, method_name)
  "
 end
 class Class
+ def noise
+  'grrrrr'
+ end
  def try_another method_name, &block
   define_method method_name do |value|
    #"hello #{value}"
