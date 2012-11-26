@@ -11,6 +11,12 @@ FactoryGirl.define do
  trait :amount_50_due do
   amount_due 50 
  end
+ trait :only_20_paid do
+  amount_paid 20 
+ end
+ trait :only_30_paid do
+  amount_paid 30 
+ end
  trait :not_paid do
   amount_paid 0 
  end

@@ -84,28 +84,40 @@ describe "PaymentRating" do
    puts "---> its color #{PaymentRating.color}"
   end
  end
- describe "when ppp" do
+ describe "when 50 of 50 paid" do
   let(:inv) { FactoryGirl.build( :invoice ) }
-  it "returns ppp" do
-   #puts "---> ppp 1: #{PaymentRating.analyze_from( invoice )}"
-   #pr = PaymentRating.analyze_from("PaymentRating", inv) do |c, pct|
+  it "returns *A*" do
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
-    if( pct == 1 )
-     eval "#{c}.new('A')"
-    elsif( pct >= 0.5 )
-     eval "#{c}.new('C')"
-    elsif( pct > 0 )
-     eval "#{c}.new('D')"
-    else
-     eval "#{c}.new('F')"
-    end
+    MyProcs::GRADE_SCALE_ONE.call( c, pct )
    end
-   
-   puts "---> ppp 1: #{pr.inspect}"
-   #puts "---> noise? #{PaymentRating.methods.grep(/^no/).inspect}"
-   #puts "---> blue noise #{PaymentRating.noise}"
-   #puts "---> color? #{PaymentRating.methods.grep(/^col/).inspect}"
-   #puts "---> its color #{PaymentRating.color}"
+   pr.should == 'A'
+  end
+ end
+ describe "when 30 of 50 paid" do
+  let(:inv) { FactoryGirl.build( :invoice, :only_30_paid ) }
+  it "returns *C*" do
+   pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
+    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+   end
+   pr.should == 'C'
+  end
+ end
+ describe "when 20 of 50 paid" do
+  let(:inv) { FactoryGirl.build( :invoice, :only_20_paid ) }
+  it "returns *D*" do
+   pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
+    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+   end
+   pr.should == 'D'
+  end
+ end
+ describe "when none paid" do
+  let(:inv) { FactoryGirl.build( :invoice, :not_paid ) }
+  it "returns *F*" do
+   pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
+    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+   end
+   pr.should == 'F'
   end
  end
 
