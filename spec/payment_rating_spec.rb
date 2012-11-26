@@ -32,13 +32,26 @@ describe "PaymentRating" do
    brees.abc.should == 77 
   end
  end
- describe "when sayhi called" do
-  it "returns *hello joel*" do
+ describe "when sayhi called with *joel*" do
+  it "returns *sup joel*" do
    george = FactoryGirl.build( :payment_20_of_50_rated ) 
-   PaymentRating.try_another('sayhi') 
-   george.sayhi('joel').should == 'hello joel'
+   PaymentRating.try_another(:sayhi) do |value|
+    value == 'joel' ? 'sup joel' : 'hello'
+   end
+   george.sayhi('joel').should == 'sup joel'
   end
  end
+
+ describe "when sayhi called with *nico*" do
+  it "returns *hello nico*" do
+   george = FactoryGirl.build( :payment_20_of_50_rated ) 
+   PaymentRating.try_another(:sayhi) do |value|
+    value == 'joel' ? 'sup joel' : "hello #{value}"
+   end
+   george.sayhi('nico').should == 'hello nico'
+  end
+ end
+
  #its(:name){ should be_present }
 end
 
@@ -52,9 +65,10 @@ def insert_method(clazz, method_name)
  "
 end
 class Class
- def try_another method_name
+ def try_another method_name, &block
   define_method method_name do |value|
-   "hello #{value}"
+   #"hello #{value}"
+   block.call(value)
   end
  end
  def try_insert_method
