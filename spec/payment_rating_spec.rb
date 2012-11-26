@@ -25,9 +25,21 @@ describe "PaymentRating" do
    chris.gogo.should == 88
   end
  end
-
+ describe "when method *abc* inserted" do
+  it "returns 77" do
+   brees = FactoryGirl.build( :payment_20_of_50_rated ) 
+   PaymentRating.try_insert_method
+   brees.abc.should == 77 
+  end
+ end
+ describe "when sayhi called" do
+  it "returns *hello joel*" do
+   george = FactoryGirl.build( :payment_20_of_50_rated ) 
+   PaymentRating.try_another('sayhi') 
+   george.sayhi('joel').should == 'hello joel'
+  end
+ end
  #its(:name){ should be_present }
-
 end
 
 def insert_method(clazz, method_name)
@@ -38,4 +50,16 @@ def insert_method(clazz, method_name)
    end
   end
  "
+end
+class Class
+ def try_another method_name
+  define_method method_name do |value|
+   "hello #{value}"
+  end
+ end
+ def try_insert_method
+  define_method 'abc' do
+   77
+  end
+ end
 end
