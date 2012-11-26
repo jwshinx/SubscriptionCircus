@@ -85,18 +85,19 @@ describe "PaymentRating" do
   end
  end
  describe "when ppp" do
-  let(:invoice) { FactoryGirl.build( :invoice ) }
+  let(:inv) { FactoryGirl.build( :invoice ) }
   it "returns ppp" do
    #puts "---> ppp 1: #{PaymentRating.analyze_from( invoice )}"
-   pr = PaymentRating.analyze_from( invoice ) do |pct|
+   #pr = PaymentRating.analyze_from("PaymentRating", inv) do |c, pct|
+   pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
     if( pct == 1 )
-     PaymentRating.new("A")
+     eval "#{c}.new('A')"
     elsif( pct >= 0.5 )
-     PaymentRating.new("C")
+     eval "#{c}.new('C')"
     elsif( pct > 0 )
-     PaymentRating.new("D")
+     eval "#{c}.new('D')"
     else
-     PaymentRating.new("F")
+     eval "#{c}.new('F')"
     end
    end
    

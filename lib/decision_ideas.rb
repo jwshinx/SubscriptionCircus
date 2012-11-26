@@ -14,8 +14,8 @@ module DecisionIdeas
    end
   end
  
-  def analyze_from arg
-   yield( arg.amount_paid.to_f / arg.amount_due.to_f ) 
+  def analyze_from arg1, arg2
+   yield( arg1, ( arg2.amount_paid.to_f / arg2.amount_due.to_f ))
   end
 
   def try_another method_name, &block

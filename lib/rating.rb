@@ -1,5 +1,10 @@
+require 'decision_ideas'
+require 'my_class_methods'
+
 class Rating
  include Comparable
+ include DecisionIdeas
+ include MyClassMethods
 
  def initialize(letter)
   @letter = letter

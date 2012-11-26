@@ -1,9 +1,9 @@
-require 'decision_ideas'
-require 'my_class_methods'
+#require 'decision_ideas'
+#require 'my_class_methods'
 
 class PaymentRating < Rating
- include DecisionIdeas 
- include MyClassMethods
+ #include DecisionIdeas 
+ #include MyClassMethods
  
  try_another :saygoodbye do |value|
   value == 'joel' ? 'later joel' : "goodbye #{value}"
