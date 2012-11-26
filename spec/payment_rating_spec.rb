@@ -66,6 +66,15 @@ describe "PaymentRating" do
   end
  end
 
+ describe "when nnn" do
+  #let(:yellow) { FactoryGirl.build( :payment_nnn_rated ) }
+  let(:yellow) { FactoryGirl.build( :payment_20_of_50_rated ) }
+  let(:invoice) { FactoryGirl.build( :invoice ) }
+  it "returns nnn" do
+   yellow.from_nnn_invoice( invoice ).should == 'A'
+  end
+ end
+
  #its(:name){ should be_present }
 end
 

@@ -14,4 +14,9 @@ FactoryGirl.define do
    FactoryGirl.build(:invoice, :amount_50_due, :amount_45_paid) )
   }
  end
+ factory :payment_nnn_rated, class: PaymentRating do
+  initialize_with { PaymentRating.from_nnn_invoice( 
+   FactoryGirl.build(:invoice, :amount_50_due, :amount_45_paid) )
+  }
+ end
 end
