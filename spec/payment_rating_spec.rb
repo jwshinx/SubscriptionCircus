@@ -38,17 +38,27 @@ describe "PaymentRating" do
   end
  end
 
- describe "when saygoodbye called with *joel*" do
-  it "returns *later joel*" do
-   blue = FactoryGirl.build( :payment_20_of_50_rated ) 
-   blue.saygoodbye('joel').should == 'later joel'
+ describe "when owes > $100 for only 30 days" do
+  it "returns *Owes $480." do
+   inv = FactoryGirl.build( :invoice, 
+                            :dated_30_days_ago,
+                            :only_20_paid,
+                            :amount_500_due ) 
+   six = FactoryGirl.build( :payment_20_of_50_rated ) 
+   six.lots_due_message(inv.amount_due - inv.amount_paid, 
+                        inv.date ).should == 'Owes $480.'
   end
  end
 
- describe "when saygoodbye called with *nico*" do
-  it "returns *goodbye nico*" do
+ describe "when owes > $100 for more than 90 days" do
+  it "returns *Collection now." do
+   inv = FactoryGirl.build( :invoice, 
+                            :dated_120_days_ago,
+                            :only_20_paid,
+                            :amount_500_due ) 
    red = FactoryGirl.build( :payment_20_of_50_rated ) 
-   red.saygoodbye('nico').should == 'goodbye nico'
+   red.lots_due_message(inv.amount_due - inv.amount_paid, 
+                        inv.date ).should == 'Collection now.'
   end
  end
 
@@ -114,12 +124,4 @@ class Class
  def noise
   'grrrrr'
  end
-=begin
- def create_message method_name, &block
-  define_method method_name do |value|
-   #"hello #{value}"
-   block.call(value)
-  end
- end
-=end
 end

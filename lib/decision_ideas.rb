@@ -4,9 +4,6 @@ module DecisionIdeas
  end
 
  module ClassMethods 
-  def saygoodbye
-   'goodbye'
-  end
 
   def create_based_on method_name, &block
    define_method method_name do |arg|
@@ -23,6 +20,13 @@ module DecisionIdeas
     block.call(value)
    end
   end
+
+  def delinquent_msg method_name, &block
+   define_method method_name do |amt, date|
+    block.call(amt, date)
+   end
+  end
+
  end
 
 end

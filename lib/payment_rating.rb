@@ -5,8 +5,10 @@ class PaymentRating < Rating
  #include DecisionIdeas 
  #include MyClassMethods
  
- create_message :saygoodbye do |value|
-  value == 'joel' ? 'later joel' : "goodbye #{value}"
+ delinquent_msg :lots_due_message do |amount, date|
+  (amount > 100 && date < Date.today-90) ? 
+   'Collection now.' : 
+   "Owes $#{amount}."
  end
 
  create_based_on :from_nnn_invoice do |paid, due|
