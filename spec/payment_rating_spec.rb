@@ -62,15 +62,6 @@ describe "PaymentRating" do
   end
  end
 
- describe "when nnn" do
-  #let(:yellow) { FactoryGirl.build( :payment_nnn_rated ) }
-  let(:yellow) { FactoryGirl.build( :payment_20_of_50_rated ) }
-  let(:invoice) { FactoryGirl.build( :invoice ) }
-  it "returns nnn" do
-   #yellow = FactoryGirl.build( :payment_nnn_rated ) 
-   yellow.from_nnn_invoice( invoice ).should == 'A'
-  end
- end
  describe "when mmm" do
   it "returns mmm" do
    blue = FactoryGirl.build( :payment_20_of_50_rated ) 
