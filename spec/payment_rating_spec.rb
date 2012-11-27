@@ -85,8 +85,8 @@ describe "PaymentRating" do
   end
  end
  describe "when 50 of 50 paid" do
-  let(:inv) { FactoryGirl.build( :invoice ) }
   it "returns *A*" do
+   inv = FactoryGirl.build( :invoice ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
     MyProcs::GRADE_SCALE_ONE.call( c, pct )
    end
@@ -94,8 +94,8 @@ describe "PaymentRating" do
   end
  end
  describe "when 30 of 50 paid" do
-  let(:inv) { FactoryGirl.build( :invoice, :only_30_paid ) }
   it "returns *C*" do
+   inv = FactoryGirl.build( :invoice, :only_30_paid ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
     MyProcs::GRADE_SCALE_ONE.call( c, pct )
    end
@@ -103,8 +103,8 @@ describe "PaymentRating" do
   end
  end
  describe "when 20 of 50 paid" do
-  let(:inv) { FactoryGirl.build( :invoice, :only_20_paid ) }
   it "returns *D*" do
+   inv = FactoryGirl.build( :invoice, :only_20_paid ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
     MyProcs::GRADE_SCALE_ONE.call( c, pct )
    end
@@ -112,8 +112,8 @@ describe "PaymentRating" do
   end
  end
  describe "when none paid" do
-  let(:inv) { FactoryGirl.build( :invoice, :not_paid ) }
   it "returns *F*" do
+   inv = FactoryGirl.build( :invoice, :not_paid ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
     MyProcs::GRADE_SCALE_ONE.call( c, pct )
    end
