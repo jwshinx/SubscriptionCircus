@@ -66,7 +66,7 @@ describe "PaymentRating" do
   it "returns *A*" do
    inv = FactoryGirl.build( :invoice ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
-    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+    GeneralProcs::GRADE_SCALE_ONE.call( c, pct )
    end
    pr.should == 'A'
   end
@@ -75,7 +75,7 @@ describe "PaymentRating" do
   it "returns *C*" do
    inv = FactoryGirl.build( :invoice, :only_30_paid ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
-    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+    GeneralProcs::GRADE_SCALE_ONE.call( c, pct )
    end
    pr.should == 'C'
   end
@@ -84,7 +84,7 @@ describe "PaymentRating" do
   it "returns *D*" do
    inv = FactoryGirl.build( :invoice, :only_20_paid ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
-    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+    GeneralProcs::GRADE_SCALE_ONE.call( c, pct )
    end
    pr.should == 'D'
   end
@@ -93,7 +93,7 @@ describe "PaymentRating" do
   it "returns *F*" do
    inv = FactoryGirl.build( :invoice, :not_paid ) 
    pr = Rating.analyze_from("PaymentRating", inv) do |c, pct|
-    MyProcs::GRADE_SCALE_ONE.call( c, pct )
+    GeneralProcs::GRADE_SCALE_ONE.call( c, pct )
    end
    pr.should == 'F'
   end

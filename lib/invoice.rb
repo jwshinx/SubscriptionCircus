@@ -1,4 +1,9 @@
+require 'general_methods'
+
 class Invoice
+ include GeneralMethods
+ include GeneralMethods::AddedInstanceMethods
+
  attr_reader :customer, :date, :amount_due, :amount_paid
 
  def initialize options={}

@@ -1,9 +1,9 @@
 #require 'decision_ideas'
-#require 'my_class_methods'
+#require 'general_methods'
 
 class PaymentRating < Rating
  #include DecisionIdeas 
- #include MyClassMethods
+ #include GeneralMethods
  
  delinquent_msg :lots_due_message do |amount, date|
   (amount > 100 && date < Date.today-90) ? 

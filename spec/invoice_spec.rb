@@ -27,5 +27,19 @@ describe "Invoice" do
   it { invoice.amount_paid.should == 0 }
   it { invoice.date.should == Date.today-30 } 
  end
+ 
+ describe "by default" do
+  describe "color" do
+   it "returns *biege*" do
+    Invoice.color.should == 'biege'
+   end
+  end
+  describe "texture" do
+   it "returns *matte*" do
+    invoice = FactoryGirl.build( :invoice )
+    invoice.texture.should == 'matte'
+   end
+  end
+ end 
 end
 
