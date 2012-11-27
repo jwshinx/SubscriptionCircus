@@ -62,15 +62,6 @@ describe "PaymentRating" do
   end
  end
 
- describe "when mmm" do
-  it "returns mmm" do
-   blue = FactoryGirl.build( :payment_20_of_50_rated ) 
-   puts "---> noise? #{PaymentRating.methods.grep(/^no/).inspect}"
-   puts "---> blue noise #{PaymentRating.noise}"
-   puts "---> color? #{PaymentRating.methods.grep(/^col/).inspect}"
-   puts "---> its color #{PaymentRating.color}"
-  end
- end
  describe "when 50 of 50 paid" do
   it "returns *A*" do
    inv = FactoryGirl.build( :invoice ) 
@@ -111,8 +102,3 @@ describe "PaymentRating" do
  #its(:name){ should be_present }
 end
 
-class Class
- def noise
-  'grrrrr'
- end
-end
