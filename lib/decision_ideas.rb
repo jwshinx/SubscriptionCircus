@@ -18,7 +18,7 @@ module DecisionIdeas
    yield( arg1, ( arg2.amount_paid.to_f / arg2.amount_due.to_f ))
   end
 
-  def try_another method_name, &block
+  def create_message method_name, &block
    define_method method_name do |value|
     block.call(value)
    end

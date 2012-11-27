@@ -5,7 +5,7 @@ class PaymentRating < Rating
  #include DecisionIdeas 
  #include MyClassMethods
  
- try_another :saygoodbye do |value|
+ create_message :saygoodbye do |value|
   value == 'joel' ? 'later joel' : "goodbye #{value}"
  end
 

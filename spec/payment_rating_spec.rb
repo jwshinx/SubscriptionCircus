@@ -21,17 +21,17 @@ describe "PaymentRating" do
  describe "when sayhi called with *joel*" do
   it "returns *sup joel*" do
    george = FactoryGirl.build( :payment_20_of_50_rated ) 
-   PaymentRating.try_another(:sayhi) do |value|
+   PaymentRating.create_message(:delinquency_message) do |value|
     value == 'joel' ? 'sup joel' : 'hello'
    end
-   george.sayhi('joel').should == 'sup joel'
+   george.delinquency_message('joel').should == 'sup joel'
   end
  end
 
  describe "when sayhi called with *nico*" do
   it "returns *hello nico*" do
    george = FactoryGirl.build( :payment_20_of_50_rated ) 
-   PaymentRating.try_another(:sayhi) do |value|
+   PaymentRating.create_message(:sayhi) do |value|
     value == 'joel' ? 'sup joel' : "hello #{value}"
    end
    george.sayhi('nico').should == 'hello nico'
@@ -114,10 +114,12 @@ class Class
  def noise
   'grrrrr'
  end
- def try_another method_name, &block
+=begin
+ def create_message method_name, &block
   define_method method_name do |value|
    #"hello #{value}"
    block.call(value)
   end
  end
+=end
 end
