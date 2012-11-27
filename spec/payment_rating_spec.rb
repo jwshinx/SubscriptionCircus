@@ -18,13 +18,6 @@ describe "PaymentRating" do
   subject { sam }
   it { sam.better_than?( mark ).should be_true }
  end
- describe "when method *abc* inserted" do
-  it "returns 77" do
-   brees = FactoryGirl.build( :payment_20_of_50_rated ) 
-   PaymentRating.try_insert_method
-   brees.abc.should == 77 
-  end
- end
  describe "when sayhi called with *joel*" do
   it "returns *sup joel*" do
    george = FactoryGirl.build( :payment_20_of_50_rated ) 
@@ -125,11 +118,6 @@ class Class
   define_method method_name do |value|
    #"hello #{value}"
    block.call(value)
-  end
- end
- def try_insert_method
-  define_method 'abc' do
-   77
   end
  end
 end
