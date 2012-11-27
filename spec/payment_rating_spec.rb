@@ -18,13 +18,6 @@ describe "PaymentRating" do
   subject { sam }
   it { sam.better_than?( mark ).should be_true }
  end
- describe "when method *gogo* inserted" do
-  it "returns 88" do
-   insert_method(PaymentRating, :gogo)
-   chris = FactoryGirl.build( :payment_20_of_50_rated ) 
-   chris.gogo.should == 88
-  end
- end
  describe "when method *abc* inserted" do
   it "returns 77" do
    brees = FactoryGirl.build( :payment_20_of_50_rated ) 
@@ -124,15 +117,6 @@ describe "PaymentRating" do
  #its(:name){ should be_present }
 end
 
-def insert_method(clazz, method_name)
- eval "
-  class #{clazz}
-   def #{method_name}
-    88    
-   end
-  end
- "
-end
 class Class
  def noise
   'grrrrr'
